@@ -14,19 +14,19 @@ class Distance:
     def __repr__(self) -> str:
         return f"Distance(km={self.km})"
 
-    def __iadd__(self, other: Distance | int | float):
+    def __iadd__(self, other: Distance | int | float) -> Distance:
         if isinstance(other, Distance):
             self.km += other.km
             return self
         self.km += other
         return self
 
-    def __mul__(self, other) -> Distance:
+    def __mul__(self, other: int | float) -> Distance:
         if isinstance(other, (int, float)):
             return Distance(self.km * other)
         return NotImplemented
 
-    def __truediv__(self, other: Distance | int | float):
+    def __truediv__(self, other: int | float) -> Distance:
         if isinstance(other, Distance):
             return NotImplemented
         return Distance(round(self.km / other, 2))
